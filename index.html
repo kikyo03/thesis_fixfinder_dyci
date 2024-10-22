@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive SVG Map</title>
-    <script src="https://kit.fontawesome.com/37d6505749.js" crossorigin="anonymous"></script>
+    <title>FixFinder</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -20,10 +19,12 @@
     <div id="slidingColumn">
         <button id="closeButton">Close</button>
         <div id="pins"></div>
+        <!-- <img src="/assets/pins/layer-svgrepo-com.svg" alt="SVG Icon" class="sliding-icon" width="30" height="30" position: relative; left: 50px; top: 30px;/> -->
     </div>
 
     <div id="mapContainer">
         <svg width="1080" height="1080" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- First Floor -->
             <g id="firstFloor">
                 <path id="COLLEGE LIBRARY" class="allPaths" d="M349.5 267.5 H729.5 V851.5 H349.5 Z" fill="#4A55A2" stroke="black" />
                 <path id="ST. CARLO ACUTIS CHAPEL" class="allPaths" d="M0.5 267.5 H202.5 V378.5 H0.5 Z" fill="#FFD0D0" stroke="black" />
@@ -112,43 +113,115 @@
                 </text>         
             </g>
 
-            <g id="Group 26">
-                <g id="LIBRARY">
-                <path id="COLLEGE LIBRARY" d="M352.5,268.5 h380 v584 h-380 z" fill="#4A55A2" stroke="black" />
+            <!-- Second Floor -->
+            <g id="secondFloor">
+                <path id="COLLEGE LIBRARY" class="allPaths" d="M352.5,268.5 h380 v584 h-380 z" fill="#4A55A2" stroke="black" />
                 <path id="COLLEGE LIBRARY_2" d="M203.5,534.5 h148 v53 h-148 z" fill="#4A55A2" stroke="black" />
-                </g>
-                <path id="SCIENTIA HALL 2" d="M2.5,949.5 h485 v130 h-485 z" fill="#C5DFF8" stroke="black" />
-                <path id="SCIENTIA HALL 1" d="M488.5,949.5 h391 v130 h-391 z" fill="#7895CB" stroke="black" />
-                <path id="STAIRS" d="M880.5,949.5 h106 v130 h-106 z" fill="black" stroke="black" />
-                <path id="COMFORT ROOMS" d="M987.5,949.5 h94 v130 h-94 z" fill="#4A55A2" stroke="black" />
-                <path id="CHS" d="M880.5,732.5 h201 v125 h-201 z" fill="#E5D9F2" stroke="black" />
-                <path id="SKILLS LAB" d="M880.5,377.5 h201 v354 h-201 z" fill="#CDC1FF" stroke="black" />
-                <path id="AMPHITHEATER" d="M880.5,268.5 h201 v108 h-201 z" fill="#A594F9" stroke="black" />
-                <path id="CHEMISTRY" d="M880.5,0.5 h201 v123 h-201 z" fill="#86A789" stroke="black" />
-                <path id="MICROBIOLOGY" d="M667.5,0.5 h212 v123 h-212 z" fill="#739072" stroke="black" />
-                <path id="PHYSICS" d="M459.5,0.5 h207 v123 h-207 z" fill="#4F6F52" stroke="black" />
-                <path id="ANATOMY" d="M210.5,0.5 h248 v123 h-248 z" fill="#3F6142" stroke="black" />
-                <path id="STAIRS_2" d="M108.5,0.5 h101 v123 h-101 z" fill="black" stroke="black" />
-                <path id="COMFORT ROOMS_2" d="M2.5,0.5 h105 v123 h-105 z" fill="#4A55A2" stroke="black" />
-                <path id="LECTURE ROOM" d="M0.5,268.5 h202 v111 h-202 z" fill="#FFD0D0" stroke="black" />
-                <path id="LECTURE ROOM_2" d="M0.5,380.5 h202 v106 h-202 z" fill="#E1ACAC" stroke="black" />
-                <path id="RESOURCES ROOM" d="M0.5,487.5 h202 v137 h-202 z" fill="#CA8787" stroke="black" />
-                <g id="OVPAA OSP/HUDDLE">
-                <path id="OVPAA OSP/HUDDLE_2" d="M0.5,625.5 h202 v232 h-202 z" fill="#835A5A" stroke="black" />
-                <path id="CREDO" d="M84.5,625.5 h118 v106 h-118 z" fill="#A87676" stroke="black" />
-                </g>
+                <path id="SCIENTIA HALL 2" class="allPaths" d="M2.5,949.5 h485 v130 h-485 z" fill="#C5DFF8" stroke="black" />
+                <path id="SCIENTIA HALL 1" class="allPaths" d="M488.5,949.5 h391 v130 h-391 z" fill="#7895CB" stroke="black" />
+                <path id="STAIRS" class="allPaths" d="M880.5,949.5 h106 v130 h-106 z" fill="black" stroke="black" />
+                <path id="COMFORT ROOMS" class="allPaths" d="M987.5,949.5 h94 v130 h-94 z" fill="#4A55A2" stroke="black" />
+                <path id="CHS" class="allPaths" d="M880.5,732.5 h201 v125 h-201 z" fill="#E5D9F2" stroke="black" />
+                <path id="SKILLS LAB" class="allPaths" d="M880.5,377.5 h201 v354 h-201 z" fill="#CDC1FF" stroke="black" />
+                <path id="AMPHITHEATER" class="allPaths" d="M880.5,268.5 h201 v108 h-201 z" fill="#A594F9" stroke="black" />
+                <path id="CHEMISTRY" class="allPaths" d="M880.5,0.5 h201 v123 h-201 z" fill="#86A789" stroke="black" />
+                <path id="MICROBIOLOGY" class="allPaths" d="M667.5,0.5 h212 v123 h-212 z" fill="#739072" stroke="black" />
+                <path id="PHYSICS" class="allPaths" d="M459.5,0.5 h207 v123 h-207 z" fill="#4F6F52" stroke="black" />
+                <path id="ANATOMY" class="allPaths" d="M210.5,0.5 h248 v123 h-248 z" fill="#3F6142" stroke="black" />
+                <path id="STAIRS_2" class="allPaths" d="M108.5,0.5 h101 v123 h-101 z" fill="black" stroke="black" />
+                <path id="COMFORT ROOMS_2" class="allPaths" d="M2.5,0.5 h105 v123 h-105 z" fill="#4A55A2" stroke="black" />
+                <path id="LECTURE ROOM" class="allPaths" d="M0.5,268.5 h202 v111 h-202 z" fill="#FFD0D0" stroke="black" />
+                <path id="LECTURE ROOM_2" class="allPaths" d="M0.5,380.5 h202 v106 h-202 z" fill="#E1ACAC" stroke="black" />
+                <path id="RESOURCES ROOM" class="allPaths" d="M0.5,487.5 h202 v137 h-202 z" fill="#CA8787" stroke="black" />
+                <path id="OVPAA" class="allPaths" d="M0.5,625.5 h202 v232 h-202 z" fill="#835A5A" stroke="black" />
+                <path id="OSP/HUDDLE" class="allPaths" d="M84.5,625.5 h118 v106 h-118 z" fill="#A87676" stroke="black" />
+            
+                <text x="540" y="550" font-size="24" fill="black" font-family="Arial" text-anchor="middle">
+                    College Library
+                </text>
+                <text x="240" y="1020" font-size="16" fill="black" font-family="Arial" text-anchor="middle">
+                    Scientia Hall 2
+                </text>
+                <text x="685" y="1020" font-size="16" fill="black" font-family="Arial" text-anchor="middle">
+                    Scientia Hall 1
+                </text>
+                <text x="1032" y="1014" font-size="16" fill="black" font-family="Arial" text-anchor="middle">
+                    CR1
+                </text>
+                <text x="980" y="785" font-size="16" fill="black" font-family="Arial" text-anchor="middle">
+                    CHS
+                </text>
+                <text x="980" y="550" font-size="16" fill="black" font-family="Arial" text-anchor="middle">
+                    Skills Lab
+                </text>
+                <text x="980" y="330" font-size="16" fill="black" font-family="Arial" text-anchor="middle">
+                    Amphitheater
+                </text>
+                <text x="980" y="62" font-size="16" fill="black" font-family="Arial" text-anchor="middle">
+                    Chemistry
+                </text>
+                <text x="775" y="62" font-size="16" fill="black" font-family="Arial" text-anchor="middle">
+                    Microbiology
+                </text>
+                <text x="565" y="62" font-size="16" fill="black" font-family="Arial" text-anchor="middle">
+                    Physics
+                </text>
+                <text x="335" y="62" font-size="16" fill="black" font-family="Arial" text-anchor="middle">
+                    Anatomy
+                </text>
+                <text x="50" y="62" font-size="16" fill="black" font-family="Arial" text-anchor="middle">
+                    CR 2
+                </text>
+                <text x="100" y="335" font-size="16" fill="black" font-family="Arial" text-anchor="middle">
+                    Lecture Room
+                </text>
+                <text x="100" y="445" font-size="16" fill="black" font-family="Arial" text-anchor="middle">
+                    Lecture Room 2
+                </text>
+                <text x="100" y="570" font-size="16" fill="black" font-family="Arial" text-anchor="middle">
+                    Resources Room
+                </text>
+                <text x="100" y="770" font-size="16" fill="black" font-family="Arial" text-anchor="middle">
+                    OVPAA 
+                </text>
+                <text x="145" y="680" font-size="16" fill="black" font-family="Arial" text-anchor="middle">
+                OSP/Huddle
+                </text>
+            </g>
+            <g style="cursor: pointer;" onclick="showFloor(1)">
+                <image href="assets/pins/1st.svg" x="1150" y="930" width="60" height="60" />
+            </g>
+        
+            <!-- Second Floor Button -->
+            <g style="cursor: pointer;" onclick="showFloor(2)">
+                <image href="assets/pins/2nd.svg" x="1150" y="1000" width="60" height="60" />
             </g>
         </svg>
     </div>
 
+
     <div>
-        <button onclick="showFloor(1)">Show First Floor</button>
-        <button onclick="showFloor(2)">Show Second Floor</button>
-    </div>
-    
+        <!-- <button onclick="showFloor(1)">Show First Floor</button>
+        <button onclick="showFloor(2)">Show Second Floor</button> -->
+        <svg>
+            <g style="cursor: pointer;" onclick="showFloor(1)">
+                <!-- Path for the button background -->
+                <path d="M880,10 h180 v40 h-180 z"  />
+                <!-- SVG pin image as button icon -->
+                <image href="assets/pins/1stfloor.svg" x="790" y="15" width="70" height="70" />
+            </g>
+        
+            <!-- Second Floor Button -->
+            <g style="cursor: pointer;" onclick="showFloor(2)">
+                <!-- Path for the button background -->
+                <path d="M880,60 h180 v40 h-180 z"  />
+                <!-- SVG pin image as button icon -->
+                <image href="assets/pins/2ndfloor.svg" x="890" y="65" width="70" height="70" />
+            </g>
+        </svg>
+        </div> 
 
     <script src="app.js"></script>
-
 </body>
 
 </html>
