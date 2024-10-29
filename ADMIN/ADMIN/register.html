@@ -10,7 +10,7 @@
     <body>
         <div class="container" id="container">
             <div class="form-container sign-up">
-            <form id="signupForm" method="POST" action="auth.php?action=register">
+                <form id="signupForm" method="POST" action="">
                     <h1>Create Account</h1>
                     <!-- <div class="social-icons">
                         <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
@@ -29,7 +29,7 @@
                 </form>
             </div>
             <div class="form-container sign-in">
-                    <form id="loginForm" method="POST" action="auth.php?action=login">
+                <form id="loginForm" method="POST" action="">
                     <h1>Login</h1>
                     <!-- <div class="social-icons">
                         <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
@@ -40,6 +40,11 @@
                     <span>To keep connected with us, please login.</span>
                     <input type="email" name="email" id="email" placeholder="Email" required >
                     <input type="password" name="password" id="password" placeholder="Password" required>
+                    <input list="panel" name="categories" placeholder="Category">
+                    <datalist id="panel">
+                        <option value="User">
+                        <option value="Admin">
+                    </datalist>
                     <button type="submit">Login</button>
                 </form>
             </div>

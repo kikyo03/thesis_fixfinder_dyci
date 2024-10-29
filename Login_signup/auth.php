@@ -7,11 +7,20 @@ if (isset($_GET['action'])) {
 
     if ($action == 'register' && $_SERVER["REQUEST_METHOD"] == "POST") {
         // Handle Registration
-        $student_number = $_POST['student_number']; // Add student number
         $fName = $_POST['fName'];
         $lName = $_POST['lName'];
         $email = $_POST['email'];
         $password = $_POST['password']; // Store password as plain text
+        $role = $_POST['role']; // Input for the user's role
+
+        // Debugging output
+        var_dump($_POST); // Check what is being submitted
+
+        // Check if role is empty
+        if (empty($role)) {
+            echo "<p>Please select a valid category.</p>";
+            exit(); // Stop execution if role is not selected
+        }
 
         // Check if email already exists in studinfo table
         $checkEmail = $conn->prepare("SELECT * FROM studinfo WHERE email = ?");
@@ -22,13 +31,12 @@ if (isset($_GET['action'])) {
         if ($result->num_rows > 0) {
             echo "<p>Email already exists! Please use a different email.</p>";
         } else {
-            // Prepare SQL statement to insert data into studinfo table
-            $sql = "INSERT INTO studinfo (student_number, first_name, last_name, email, password) VALUES (?, ?, ?, ?, ?)";
+            // Prepare SQL statement to insert data into studinfo table without student_number
+            $sql = "INSERT INTO studinfo (first_name, last_name, email, password, role) VALUES (?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssss", $student_number, $fName, $lName, $email, $password);
+            $stmt->bind_param("sssss", $fName, $lName, $email, $password, $role);
 
             if ($stmt->execute()) {
-                // Redirect to index.html after successful registration
                 header("Location: index.html");
                 exit();
             } else {
@@ -41,32 +49,32 @@ if (isset($_GET['action'])) {
         $checkEmail->close();
     }
 
+    // Handle Login (same as before)
     if ($action == 'login' && $_SERVER["REQUEST_METHOD"] == "POST") {
         // Handle Login
         $email = $_POST['email'];
         $password = $_POST['password'];
 
         // Check if the email exists in the database
-        $sql = "SELECT * FROM studinfo WHERE email = ?";
+        $sql = "SELECT * FROM studinfo WHERE email = ? AND password = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $email);
+        $stmt->bind_param("ss", $email, $password);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
             $user = $result->fetch_assoc();
-            // Compare the entered password with the stored password
-            if ($password === $user['password']) { // Use plain text comparison
-                // Redirect to index.html after successful login
-                header("Location: index.html");
-                exit();
+            // Role-based redirection
+            if ($user['role'] === 'Admin') {
+                header("Location: ADMIN\ADMIN\admin.html");
             } else {
-                echo "<p>Incorrect password. Please try again.</p>";
+                header("Location: history.html"); // Redirect to history.html for non-Admin users
             }
+            exit();
         } else {
-            echo "<p>Email not found. Please register first.</p>";
+            echo "<p>Invalid email or password. Please try again.</p>";
         }
-
+        
         $stmt->close();
     }
 
